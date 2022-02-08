@@ -1,0 +1,55 @@
+.container {
+  padding: 30px 300px 50px 300px;
+  width: 100vw;
+  height: 200px;
+  background-color: #ffbf2d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.buttonContainer button {
+  border: none;
+  border-radius: 35px;
+  background-color: black;
+  color: white;
+  width: 250px;
+  height: 70px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: all ease 0.3s;
+  cursor: pointer;
+}
+.buttonContainer button:hover {
+  background: rgba(0, 0, 0, 0.781);
+}
+.socialContainer {
+  display: flex;
+}
+.socialContainer i {
+  margin: 15px;
+  font-size: 2rem;
+  transition: all ease 0.3s;
+  cursor: pointer;
+}
+
+.textContainer h2 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.textContainer h2 span {
+  font-weight: 700;
+}
+.textContainer h3 {
+  color: grey;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 1350px) {
+  .container {
+    flex-direction: column;
+    padding: 30px;
+    text-align: center;
+    gap: 10px;
+    height: 300px;
+  }
+}

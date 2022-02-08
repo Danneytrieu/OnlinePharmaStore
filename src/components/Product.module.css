@@ -1,0 +1,43 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: left;
+  padding-left: 25px;
+  background: white;
+  width: auto;
+  height: 270px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.100);
+}
+.container img{
+  width: 30%;
+}
+.container h2{
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.container h3{
+  font-size: 1rem;
+  color: rgb(80, 80, 80);
+  font-weight: 400;
+}
+.container h4{
+  font-size: 1rem;
+  text-decoration:line-through;
+  font-weight: 400
+;
+}
+.container h5{
+  font-size: 2.5rem;
+}
+.container h6{
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+
+.container h6 span{
+  color: #ffbf2d;
+  font-weight: 500;
+}

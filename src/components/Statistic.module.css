@@ -1,0 +1,44 @@
+.container{
+  width: 100%;
+  height: 500px;
+  padding: 30px 300px 50px 300px;
+  text-align: center;
+  background-color: #F8F8F9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container h2{
+  font-family: 'Noto Sans', sans-serif;
+  margin: 0px 0 30px;
+  font-size: 2.5rem;
+}
+.statContainer{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.singleStat h3{
+  font-size: 5rem;
+  color: #FFBF2D;
+}
+.singleStat h4{
+  font-size: 1rem;
+  color: black;
+  font-weight: 300
+  ;
+}
+@media screen and (max-width: 1200px) {
+  .container {
+    padding: 30px 100px 50px 100px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .container {
+    padding: 10px 50px 30px 50px;
+  }
+  .statContainer{
+    display: flex;
+    flex-direction: column;
+  }
+}
