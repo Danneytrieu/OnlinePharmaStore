@@ -1,4 +1,4 @@
-import StatisticCss from "./Statistic.module.css"
+import StatisticCss from "../style/Statistic.module.css";
 
 import React from 'react';
 

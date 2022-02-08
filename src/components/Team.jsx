@@ -1,4 +1,4 @@
-import TeamCss from "./Team.module.css"
+import TeamCss from "../style/Team.module.css";
 
 import React from 'react';
 

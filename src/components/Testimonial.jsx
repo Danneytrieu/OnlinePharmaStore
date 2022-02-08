@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TestimonialCss from "./Testimonial.module.css";
+import TestimonialCss from "../style/Testimonial.module.css";
 import Slider from "react-slick";
 
 export default class Testimonial extends Component {

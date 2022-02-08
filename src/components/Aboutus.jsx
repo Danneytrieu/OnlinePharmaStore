@@ -1,5 +1,5 @@
 import React from 'react';
-import AboutusCss from "./Aboutus.module.css";
+import AboutusCss from "../style/Aboutus.module.css";
 
 function Aboutus(props) {
   return (

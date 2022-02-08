@@ -1,5 +1,5 @@
-import ProductCss from "./Product.module.css"
-import pill from "./image/pill.png"
+import ProductCss from "../style/Product.module.css";
+import pill from "../assets/image/pill.png"
 
 import React from 'react';
 

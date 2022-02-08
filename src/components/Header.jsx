@@ -1,4 +1,4 @@
-import HeaderCss from "./Header.module.css";
+import HeaderCss from "../style/Header.module.css";
 
 import React from 'react';
 
@@ -29,21 +29,21 @@ function Header(props) {
             </div>
           </div>
           <div className={HeaderCss.policy}>
-            <i class="fas fa-headset"></i>
+            <i className="fas fa-headset"></i>
             <div>
               <h3>Support 24/7</h3>
               <h4>Contact us 24 hours a day</h4>
             </div>
           </div>
           <div className={HeaderCss.policy}>
-            <i class="fas fa-piggy-bank"></i>
+            <i className="fas fa-piggy-bank"></i>
             <div>
               <h3>Save Money</h3>
               <h4>Get the best price</h4>
             </div>
           </div>
           <div className={HeaderCss.policy}>
-            <i class="fas fa-fingerprint"></i>
+            <i className="fas fa-fingerprint"></i>
             <div>
               <h3>Payment Secure</h3>
               <h4>Ensure secure payment</h4>

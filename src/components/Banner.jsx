@@ -1,4 +1,4 @@
-import BannerCss from "./Banner.module.css";
+import BannerCss from "../style/Banner.module.css";
 import React from 'react';
 
 function Banner(props) {

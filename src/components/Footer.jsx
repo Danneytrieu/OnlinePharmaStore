@@ -1,4 +1,4 @@
-import FooterCss from "./Footer.module.css"
+import FooterCss from "../style/Footer.module.css";
 import React from 'react';
 
 function Footer(props) {

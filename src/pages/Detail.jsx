@@ -1,5 +1,5 @@
 import DetailCss from "./Detail.module.css";
-import defaultImg from "../components/image/default.jpg"
+import defaultImg from "../assets/image/default.jpg";
 
 import React from 'react';
 

@@ -1,4 +1,4 @@
-import NavCss from "./Nav.module.css";
+import NavCss from "../style/Nav.module.css";
 import { Link } from "react-router-dom";
 
 import React from 'react';
