@@ -3,13 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Default from "./pages/Default";
 import Cart from "./pages/Cart";
-import ProductList from "./pages/ProductList";
+import ProductList from "./pages/ProductList/ProductList";
 import Home from './pages/Home';
 import Banner from './components/Banner';
 import Footer from './components/Footer';
-import Contact from './pages/Contact';
+import Contact from './pages/Contact/Contact';
 import About from './pages/About';
-import Detail from './pages/Detail';
+import Detail from './pages/Detail/Detail';
 
 function App() {
   return (

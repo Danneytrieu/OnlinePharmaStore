@@ -1,7 +1,6 @@
 import DetailCss from "./Detail.module.css";
-import defaultImg from "../assets/image/default.jpg";
-
-import React from 'react';
+import defaultImg from "../../assets/image/default.jpg";
+import React from "react";
 
 function Detail(props) {
   return (
@@ -22,7 +21,7 @@ function Detail(props) {
               <span>0</span>
             </div>
             <button>+ Add</button>
-            <i class="far fa-heart"></i>
+            <i className="far fa-heart"></i>
             <span>Add to Wishlist</span>
           </div>
         </aside>
