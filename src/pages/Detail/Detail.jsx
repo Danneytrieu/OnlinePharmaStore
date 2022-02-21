@@ -1,61 +1,76 @@
 import DetailCss from "./Detail.module.css";
-import defaultImg from "../../assets/image/default.jpg";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import useFetch from "../../helper/useFetch";
+import { useParams } from "react-router";
 
 function Detail(props) {
+  const params = useParams();
+  const id = parseInt(params.id);
+  const [product, setProduct] = useState();
+  const { get, loading } = useFetch(
+    "https://fillmypilltest-default-rtdb.firebaseio.com/"
+  );
+  //Fetch and filter data
+  useEffect(() => {
+    get(".json")
+      .then((datas) => {
+        setProduct(datas.filter((data) => data.id === id));
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  if (product) {
+    console.log(product[0].price_detail.pharmacy);
+  }
+
   return (
     <section className={DetailCss.container}>
-      <article className={DetailCss.shoppingCard}>
-        <img src={defaultImg} alt="med" />
-        <aside className={DetailCss.card}>
-          <h2>Atorvastain</h2>
-          <h3>$10.11</h3>
-          <h4>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco,Proin lectus
-            ipsum, gravida et mattis vulputate, tristique ut lectus
-          </h4>
-          <div className={DetailCss.wishlist}>
-            <div>
-              <span>0</span>
+      {product && (
+        <>
+          <article className={DetailCss.shoppingCard}>
+            <img src={product[0].image} alt="med" />
+            <aside className={DetailCss.card}>
+              <h2>{product[0].display}</h2>
+              <h3>${Math.min(...product[0].price_detail.price)}</h3>
+              <h4>{product[0].description}</h4>
+              <div className={DetailCss.wishlist}>
+                <div>
+                  <span>0</span>
+                </div>
+                <button>+ Add</button>
+                <i className="far fa-heart"></i>
+                <span>Add to Wishlist</span>
+              </div>
+            </aside>
+          </article>
+          <article className={DetailCss.pharmaCard}>
+            <div className={DetailCss.pharmaTitle}>
+              <h2>Pharmacies</h2>
+              <h3>
+                Prices as low as ${Math.min(...product[0].price_detail.price)}
+              </h3>
             </div>
-            <button>+ Add</button>
-            <i className="far fa-heart"></i>
-            <span>Add to Wishlist</span>
-          </div>
-        </aside>
-      </article>
-      <article className={DetailCss.pharmaCard}>
-        <div className={DetailCss.pharmaTitle}>
-          <h2>Pharmacies</h2>
-          <h3>Prices as low as $6.51</h3>
-        </div>
-        <div className={DetailCss.pharmaLine}></div>
-        <div className={DetailCss.pharmaList}>
-          <section>
-            <p>Albertsons</p>
-            <p>Kroger</p>
-            <p>Safeway</p>
-            <p>Target</p>
-            <p>CVS</p>
-          </section>
-          <section className={DetailCss.straightline}>
-            <p>$53</p>
-            <p>$53</p>
-            <p>$53</p>
-            <p>$53</p>
-            <p>$53</p>
-          </section>
-          <section>
-            <p>$20</p>
-            <p>$20</p>
-            <p>$20</p>
-            <p>$20</p>
-            <p>$20</p>
-          </section>
-        </div>
-      </article>
+            <div className={DetailCss.pharmaLine}></div>
+            <div className={DetailCss.pharmaList}>
+              <section>
+                <p>{product[0].price_detail.pharmacy[0]}</p>
+                <p>{product[0].price_detail.pharmacy[1]}</p>
+                <p>{product[0].price_detail.pharmacy[2]}</p>
+              </section>
+              <section className={DetailCss.straightline}>
+                <p>{product[0].prices[0]}</p>
+                <p>{product[0].prices[1]}</p>
+                <p>{product[0].prices[2]}</p>
+              </section>
+              <section>
+                <p>{product[0].price_detail.price[0]}</p>
+                <p>{product[0].price_detail.price[1]}</p>
+                <p>{product[0].price_detail.price[2]}</p>
+              </section>
+            </div>
+          </article>
+        </>
+      )}
     </section>
   );
 }

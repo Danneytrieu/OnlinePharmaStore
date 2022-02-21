@@ -1,9 +1,14 @@
 import NavCss from "../style/Nav.module.css";
 import { Link } from "react-router-dom";
+import React, { useRef } from 'react';
+import { useEffect } from 'react';
 
-import React from 'react';
-
-function Nav(props) {
+function Nav({ cartItems, wishItems }) {
+  const inputRef = useRef()
+  //Search bar auto focus on render
+  useEffect(()=>{
+    inputRef.current.focus()
+  },[])
   return (
     <>
       <div className={NavCss.container}>
@@ -34,22 +39,24 @@ function Nav(props) {
           <section className={NavCss.wrapper}>
             <article className={NavCss.searchContainer}>
               <i className={`${NavCss.searchIcon} fas fa-search`}></i>
-              <span className={NavCss.searchDescription}>
-                Search product...
-              </span>
+              <input
+                ref={inputRef}
+                placeholder="Search product..."
+                className={NavCss.searchInput}
+              />
               <button className={NavCss.searchButton}>Search</button>
             </article>
             <article className={NavCss.wishCartContainer}>
               <div className={NavCss.wishContainer}>
                 <i className="fas fa-heart"></i>
                 <div className={NavCss.wishBorder}>
-                  <span className={NavCss.wishAmount}>0</span>
+                  <span className={NavCss.wishAmount}>{wishItems.length}</span>
                 </div>
               </div>
               <div className={NavCss.cartContainer}>
                 <i className="fas fa-shopping-cart"></i>
                 <div className={NavCss.cartBorder}>
-                  <span className={NavCss.cartAmount}>0</span>
+                  <span className={NavCss.cartAmount}>{cartItems.length}</span>
                 </div>
               </div>
             </article>

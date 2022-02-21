@@ -1,10 +1,23 @@
 import Product from "../../components/Product";
-import ProlistCss from "./ProductList.module.css";
-import { products } from "../../context/productData";
-
-import React from "react";
+import ProlistCss from "./StoreFront.module.css";
+import React, { useState, useEffect } from "react";
+import useFetch from "../../helper/useFetch";
+import Loader from "../../components/Loader";
 
 function ProductList(props) {
+  const [products, setProducts] = useState([]);
+  const { get, loading } = useFetch(
+    "https://fillmypilltest-default-rtdb.firebaseio.com/"
+  );
+  //Fetch products' data
+  useEffect(() => {
+    get(".json")
+      .then((data) => {
+        setProducts(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+  //Categories display items
   const categoriesArray = [
     "Allergy & Hay Fever",
     "Headache & Pain Relief",
@@ -23,16 +36,14 @@ function ProductList(props) {
     "Ear Care",
     "Headlice & Scabies",
   ];
-  const categoriesDisplay = categoriesArray.map(item => <h3 key={item}>{item}</h3>)
-  const productsDisplay = products.map((product, index) => (
-    <Product key={index} detail={products[index]} />
-  ));
 
   return (
     <section className={ProlistCss.container}>
       <article className={ProlistCss.categoriesContainer}>
         <h2>Categories</h2>
-        {categoriesDisplay}
+        {categoriesArray.map((item) => (
+          <h3 key={item}>{item}</h3>
+        ))}
       </article>
       <article className={ProlistCss.barContainer}>
         <i className="fas fa-grip-vertical"></i>
@@ -40,7 +51,10 @@ function ProductList(props) {
         <h3> Showing 1–10 of 20 results</h3>
       </article>
       <article className={ProlistCss.productsContainer}>
-        {productsDisplay}
+        {loading && <Loader />}
+        {products.map((product,index) => (
+          <Product key={index} id={index} details={product} />
+        ))}
         <button>See More</button>
       </article>
     </section>

@@ -61,9 +61,13 @@
   display: flex;
   border-radius: 5px;
 }
-.searchDescription {
+.searchInput {
   margin: auto auto auto 30px;
   color: rgb(180, 180, 180);
+  border: none;
+}
+.searchInput:focus{
+  outline: none;
 }
 .searchIcon {
   margin: auto 0 auto 20px;
