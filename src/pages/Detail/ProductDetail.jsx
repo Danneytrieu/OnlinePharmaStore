@@ -1,11 +1,13 @@
-import DetailCss from "./Detail.module.css";
+import DetailCss from "./ProductDetail.module.css";
 import React, { useState, useEffect } from "react";
 import useFetch from "../../helper/useFetch";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router";
+import Loader from '../../components/Loader';
 
-function Detail(props) {
+function Detail({ cart, onProductAdd,  }) {
   const params = useParams();
-  const id = parseInt(params.id);
+  const paramsId = parseInt(params.id);
   const [product, setProduct] = useState();
   const { get, loading } = useFetch(
     "https://fillmypilltest-default-rtdb.firebaseio.com/"
@@ -14,17 +16,21 @@ function Detail(props) {
   useEffect(() => {
     get(".json")
       .then((datas) => {
-        setProduct(datas.filter((data) => data.id === id));
+        setProduct(datas.filter((data) => data.id === paramsId));
       })
       .catch((error) => console.log(error));
   }, []);
-
-  if (product) {
-    console.log(product[0].price_detail.pharmacy);
-  }
+  //find product matches current product.id
+  const productFromCart = cart.find((cartItem) => {
+    return cartItem.id === paramsId;
+  });
+  //save product quantity if exist, default quantity of 0
+  const quantity = productFromCart ? productFromCart.cartQuantity : 0;
 
   return (
     <section className={DetailCss.container}>
+      <Link to={`/products/product/${paramsId}`} />
+      {loading && <Loader />}
       {product && (
         <>
           <article className={DetailCss.shoppingCard}>
@@ -34,12 +40,8 @@ function Detail(props) {
               <h3>${Math.min(...product[0].price_detail.price)}</h3>
               <h4>{product[0].description}</h4>
               <div className={DetailCss.wishlist}>
-                <div>
-                  <span>0</span>
-                </div>
-                <button>+ Add</button>
-                <i className="far fa-heart"></i>
-                <span>Add to Wishlist</span>
+                <div><span>{quantity}</span></div>
+                <button onClick={() => onProductAdd(product)}>+ Add</button>
               </div>
             </aside>
           </article>

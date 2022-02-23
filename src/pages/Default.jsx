@@ -1,4 +1,4 @@
-import error from "../assets/image/default.jpg";
+import error from "../assets/image/404.jpg";
 
 import React from 'react';
 

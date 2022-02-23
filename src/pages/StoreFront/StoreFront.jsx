@@ -4,19 +4,8 @@ import React, { useState, useEffect } from "react";
 import useFetch from "../../helper/useFetch";
 import Loader from "../../components/Loader";
 
-function ProductList(props) {
-  const [products, setProducts] = useState([]);
-  const { get, loading } = useFetch(
-    "https://fillmypilltest-default-rtdb.firebaseio.com/"
-  );
-  //Fetch products' data
-  useEffect(() => {
-    get(".json")
-      .then((data) => {
-        setProducts(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+function ProductList({loading,products}) {
+  
   //Categories display items
   const categoriesArray = [
     "Allergy & Hay Fever",
@@ -52,9 +41,10 @@ function ProductList(props) {
       </article>
       <article className={ProlistCss.productsContainer}>
         {loading && <Loader />}
-        {products.map((product,index) => (
-          <Product key={index} id={index} details={product} />
-        ))}
+        {products.map((product) => {
+          return <Product key={product.id} id={product.id} details={product} />;
+        })}
+  
         <button>See More</button>
       </article>
     </section>

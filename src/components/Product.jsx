@@ -2,7 +2,6 @@ import ProductCss from "../style/Product.module.css";
 import pill from "../assets/image/pill.png";
 import React from "react";
 import { Link } from "react-router-dom";
-import Detail from "../pages/Detail/Detail";
 
 function Product(props) {
   const { brand, form, dosage, quantity, price_detail } = props.details;
@@ -12,7 +11,8 @@ function Product(props) {
 
   return (
     <section className={ProductCss.container}>
-      <Link to={`product/${props.id}`}>
+      <Link to={`product/${props.id}`} state={{ id: props.id }}
+        >
         <img src={pill} alt="" />
       </Link>
       <h2>{brand[0]}</h2>

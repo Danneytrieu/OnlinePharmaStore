@@ -8,6 +8,10 @@
   gap: 50px;
 }
 
+.active{
+  font-weight: bold;
+}
+
 .right {
   display: flex;
   flex-direction: column;
