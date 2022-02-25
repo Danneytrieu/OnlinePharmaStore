@@ -14,8 +14,21 @@ import ProductDetail from "./pages/Detail/ProductDetail";
 import useFetch from "./helper/useFetch";
 
 function App() {
-  const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState(function () {
+    let savedCart = [];
+    try {
+      savedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    } catch (error) {
+      savedCart = [];
+    }
+    return savedCart;
+  });
+  useEffect(() => {
+    if (cart) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart]);
   const { get, loading } = useFetch(
     "https://fillmypilltest-default-rtdb.firebaseio.com/"
   );
@@ -32,16 +45,16 @@ function App() {
   }, []);
   //Document title change
   useEffect(() => {
-    if (cart === 0) {
+    if (cartCount === 0) {
       document.title = `FILL MY PILL || Add your first item`;
     }
-    if (cart.length === 1) {
+    if (cartCount === 1) {
       document.title = `FILL MY PILL || Checkout (${cartCount}) item`;
     }
-    if (cart.length > 1) {
+    if (cartCount > 1) {
       document.title = `FILL MY PILL || Checkout (${cartCount}) items`;
     }
-  }, [cart]);
+  }, [cartCount]);
   //Function add product
   function handleProductAdd(newProduct) {
     //scenario 1: found match item in cart -> only update quantity
@@ -75,7 +88,7 @@ function App() {
         onProductDelete={handleProductDelete}
       />
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Home products={products} />} />
 
         <Route
           exact
@@ -86,7 +99,11 @@ function App() {
           exact
           path="/products/product/:id"
           element={
-            <ProductDetail cart={cart} onProductAdd={handleProductAdd} />
+            <ProductDetail
+              cart={cart}
+              onProductAdd={handleProductAdd}
+              onProductDelete={handleProductDelete}
+            />
           }
         />
 

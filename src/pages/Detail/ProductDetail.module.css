@@ -33,12 +33,24 @@
   gap: 10px;
   margin-top: 20px;
   align-items: flex-end;
+  align-items: center;
+}
+.trash{
+  font-size: 50px;
+  color: rgb(202, 202, 202);
+  transition: all ease 0.3s;
+}
+.trash:hover{
+  color: orangered;
+  cursor: pointer;
 }
 .wishlist div {
   border: solid 1px black;
-  width: 100px;
+  width: 70px;
   padding: 15px;
   display: inline-block;
+  border-radius: 5px;
+  text-align: center;
 }
 .wishlist button {
   background-color: black;

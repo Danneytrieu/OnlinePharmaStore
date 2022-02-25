@@ -1,6 +1,8 @@
 import React from "react";
 import CardCss from "./Cart.module.css";
 import { Link } from "react-router-dom";
+import {FaTrashAlt} from "react-icons/fa"
+import { BsCartPlusFill } from "react-icons/bs";
 
 function Cart({ cart, onProductAdd, onProductDelete }) {
   const totalPrice = cart.reduce((total, product) => {
@@ -28,7 +30,6 @@ function Cart({ cart, onProductAdd, onProductDelete }) {
             </thead>
             <tbody>
               {cart.map((product) => {
-                console.log(product.id);
                 return (
                   <>
                     <tr>
@@ -50,7 +51,17 @@ function Cart({ cart, onProductAdd, onProductDelete }) {
                       </td>
 
                       <td>${Math.min(...product.price_detail.price)}</td>
-                      <td>{product.cartQuantity}</td>
+                      <td>
+                        {product.cartQuantity}
+                        <BsCartPlusFill
+                          className={CardCss.add}
+                          onClick={() => onProductAdd([product])}
+                        />
+                        <FaTrashAlt
+                          className={CardCss.delete}
+                          onClick={() => onProductDelete(product.id)}
+                        />
+                      </td>
                       <td>
                         <strong>
                           $

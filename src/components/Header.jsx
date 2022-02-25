@@ -1,24 +1,24 @@
 import HeaderCss from "../style/Header.module.css";
+import { Link } from "react-router-dom";
+import React from "react";
 
-import React from 'react';
-
-function Header(props) {
+function Header({ products }) {
   return (
     <>
       <section className={HeaderCss.headerContainer}>
         <h2>Stop Overpaying for Your Meds</h2>
         <h3>Try one of the popular search below and compare prices</h3>
         <article className={HeaderCss.popularItems}>
-          <button>Lipitor</button>
-          <button>Sildenafil</button>
-          <button>Norvasc</button>
-          <button>Lexapro</button>
-          <button>Zoloft</button>
-          <button>Sildenafil</button>
-          <button>Lexapro</button>
-          <button>Sildenafil</button>
-          <button>Norvasc</button>
-          <button>Lipotor</button>
+          {products &&
+            products.map((product) => {
+              return (
+                <>
+                  <Link to={`/products/product/${product.id}`}>
+                    <button>{product.brand}</button>
+                  </Link>
+                </>
+              );
+            })}
         </article>
         <article className={HeaderCss.policyContainer}>
           <div className={HeaderCss.policy}>

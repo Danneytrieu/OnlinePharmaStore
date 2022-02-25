@@ -4,8 +4,10 @@ import useFetch from "../../helper/useFetch";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import Loader from '../../components/Loader';
+import { FaTrashAlt } from "react-icons/fa";
 
-function Detail({ cart, onProductAdd,  }) {
+
+function Detail({ cart, onProductAdd, onProductDelete }) {
   const params = useParams();
   const paramsId = parseInt(params.id);
   const [product, setProduct] = useState();
@@ -26,9 +28,9 @@ function Detail({ cart, onProductAdd,  }) {
   });
   //save product quantity if exist, default quantity of 0
   const quantity = productFromCart ? productFromCart.cartQuantity : 0;
-
   return (
     <section className={DetailCss.container}>
+      <Link to={`/products`}>Back</Link>
       <Link to={`/products/product/${paramsId}`} />
       {loading && <Loader />}
       {product && (
@@ -40,8 +42,14 @@ function Detail({ cart, onProductAdd,  }) {
               <h3>${Math.min(...product[0].price_detail.price)}</h3>
               <h4>{product[0].description}</h4>
               <div className={DetailCss.wishlist}>
-                <div><span>{quantity}</span></div>
+                <div>
+                  <span>{quantity}</span>
+                </div>
                 <button onClick={() => onProductAdd(product)}>+ Add</button>
+                <FaTrashAlt className={DetailCss.trash}
+                  onClick={() => onProductDelete(product[0].id)}
+
+                />
               </div>
             </aside>
           </article>

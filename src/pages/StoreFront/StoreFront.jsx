@@ -1,7 +1,6 @@
 import Product from "../../components/Product";
 import ProlistCss from "./StoreFront.module.css";
-import React, { useState, useEffect } from "react";
-import useFetch from "../../helper/useFetch";
+import React from "react";
 import Loader from "../../components/Loader";
 
 function ProductList({loading,products}) {

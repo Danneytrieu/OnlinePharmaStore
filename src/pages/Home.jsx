@@ -8,10 +8,11 @@ import { Link } from 'react-router-dom';
 
 import React from 'react';
 
-function Home(props) {
+function Home({products}) {
+  
   return (
     <>
-      <Header></Header>
+      <Header products={products}></Header>
       <Responsive></Responsive>
       <Statistic></Statistic>
     </>
