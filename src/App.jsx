@@ -82,6 +82,7 @@ function App() {
   return (
     <>
       <Nav
+        products={products}
         cartCount={cartCount}
         cart={cart}
         onProductAdd={handleProductAdd}

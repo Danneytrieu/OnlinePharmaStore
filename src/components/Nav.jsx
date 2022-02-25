@@ -5,13 +5,26 @@ import { useEffect } from "react";
 import Modal from "./CartModal";
 import DropModal from "./DropModal";
 
-function Nav({ cart, cartCount, onProductAdd, onProductDelete }) {
+function Nav({ products, cart, cartCount, onProductAdd, onProductDelete }) {
+  const [filteredData, setFilteredData] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [openDropModal, setOpenDropModal] = useState(false);
+
+  function handleFilterChange(e) {
+    const searchWord = e.target.value;
+    const newFilter = products.filter((product) => {
+      return product.display.toLowerCase().includes(searchWord.toLowerCase());
+    });
+    if (searchWord === "") {
+      setFilteredData([]);
+    } else {
+      setFilteredData(newFilter);
+    }
+  }
+
   function handleModalClick() {
     setOpenDropModal((prev) => !prev);
   }
-
   const inputRef = useRef();
   //Search bar auto focus on render
   useEffect(() => {
@@ -51,10 +64,29 @@ function Nav({ cart, cartCount, onProductAdd, onProductDelete }) {
             <article className={NavCss.searchContainer}>
               <i className={`${NavCss.searchIcon} fas fa-search`}></i>
               <input
+                onChange={handleFilterChange}
                 ref={inputRef}
                 placeholder="Search product..."
                 className={NavCss.searchInput}
               />
+              {filteredData.length != 0 && (
+                <div className={NavCss.searchResult}>
+                  {filteredData.map((product) => {
+                    return (
+                      <Link
+                        style={{ textDecoration: "none", color: "black" }}
+                        key={product.id}
+                        to={`/products/product/${product.id}`}
+                      >
+                        <div className={NavCss.searchItem}>
+                          {product.display}
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+
               <button className={NavCss.searchButton}>Search</button>
             </article>
             <article

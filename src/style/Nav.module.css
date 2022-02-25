@@ -7,7 +7,20 @@
   font-family: "Roboto", sans-serif;
   gap: 50px;
 }
+.searchResult{
+  position: absolute;
+  height: auto;
+  width: 100%;
+  background-color: white;
+  color: black;
+  margin-top: 55px;
+  border-radius: 5px;
+}
 
+.searchItem{
+  margin: 20px 0 20px 70px;
+  text-decoration: none;
+}
 .active{
   font-weight: bold;
 }
@@ -64,6 +77,7 @@
   height: 50px;
   display: flex;
   border-radius: 5px;
+  position: relative
 }
 .searchInput {
   margin: auto auto auto 30px;
