@@ -11,16 +11,15 @@ function Product(props) {
 
   return (
     <section className={ProductCss.container}>
-      <Link to={`product/${props.id}`} state={{ id: props.id }}
-        >
+      <Link to={`product/${props.id}`} state={{ id: props.id }}>
         <img src={pill} alt="" />
       </Link>
       <h2>{brand[0]}</h2>
       <h3>
         {quantity} {form} {dosage}
       </h3>
-      <h4>${minPrice}</h4>
-      <h5>${maxPrice}</h5>
+      <h4>${maxPrice}</h4>
+      <h5>${minPrice}</h5>
       <h6>
         Save up to <span>{maxSaving}</span>
       </h6>

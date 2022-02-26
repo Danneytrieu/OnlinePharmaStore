@@ -5,7 +5,8 @@
   color: black;
   border: lightgray 0.5px solid;
   padding: 15px;
-  min-width: 250px;
+  margin-top: 5px;
+  border-radius: 5px;
 }
 h4{
   font-weight: 400;

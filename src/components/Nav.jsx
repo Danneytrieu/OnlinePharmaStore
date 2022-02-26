@@ -37,11 +37,9 @@ function Nav({ products, cart, cartCount, onProductAdd, onProductDelete }) {
           <h1 className={NavCss.branding}>
             <a href="/">FILL MY PILL</a>
           </h1>
-          <div className={NavCss.dropdownContainer}>
+          <div onClick={handleModalClick} className={NavCss.dropdownContainer}>
             <i className="fas fa-bars"></i>
-            <div onClick={handleModalClick} className={NavCss.dropdownTitle}>
-              Browse Categories
-            </div>
+            <div className={NavCss.dropdownTitle}>Browse Categories</div>
           </div>
           {openDropModal && <DropModal />}
         </div>
@@ -69,7 +67,7 @@ function Nav({ products, cart, cartCount, onProductAdd, onProductDelete }) {
                 placeholder="Search product..."
                 className={NavCss.searchInput}
               />
-              {filteredData.length != 0 && (
+              {filteredData.length !== 0 && (
                 <div className={NavCss.searchResult}>
                   {filteredData.map((product) => {
                     return (

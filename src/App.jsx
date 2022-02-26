@@ -42,7 +42,7 @@ function App() {
         setProducts(data);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [get]);
   //Document title change
   useEffect(() => {
     if (cartCount === 0) {
