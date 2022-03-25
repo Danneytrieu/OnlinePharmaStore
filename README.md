@@ -1,7 +1,7 @@
 OnlinePharmaStore
 Pharmacy Store (E-commerce): This project was inspired by my mother. She's always had trouble paying different prices for the same medicine. This e-commerce store assists in the resolution of a real-world problem by comparing prices from various pharmacies.
 
-ℎ𝑡𝑡𝑝𝑠://𝑜𝑛𝑙𝑖𝑛𝑒𝑝ℎ𝑎𝑟𝑚𝑎.𝑛𝑒𝑡𝑙𝑖𝑓𝑦.𝑎𝑝𝑝
+https://onlinepharma.netlify.app/
 
 𝐖𝐡𝐚𝐭 𝐝𝐢𝐝 𝐈 𝐥𝐞𝐚𝐫𝐧?
 1. Design all pages with Figma
