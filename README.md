@@ -1,4 +1,3 @@
-OnlinePharmaStore
 Pharmacy Store (E-commerce): This project was inspired by my mother. She's always had trouble paying different prices for the same medicine. This e-commerce store assists in the resolution of a real-world problem by comparing prices from various pharmacies.
 
 Live: https://onlinepharma.netlify.app/
